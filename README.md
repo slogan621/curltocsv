@@ -3,7 +3,7 @@ Simple tool that collects timing info from curl for obtaining index.html from a 
 
 Example:
 
-   python curltocsv.py -f format.txt -d www.cnn.com -w cnn.csv
+    python curltocsv.py -f format.txt -d www.cnn.com -w cnn.csv
 
 Above collects data from www.cnn.com and writes it to cnn.csv
 
