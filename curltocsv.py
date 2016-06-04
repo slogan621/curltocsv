@@ -20,6 +20,7 @@ import subprocess
 import time
 import os
 import json
+import datetime
 
 # curl -w "@format.txt" -o /dev/null -s http://www2.hm.com/zh_cn/index.html
 
@@ -82,6 +83,8 @@ class CurlToCSV:
                 output = subprocess.Popen(cmdargs, stdout=subprocess.PIPE).communicate()[0]
                 output = output.split("\n")
                 if not self._json:
+                    o.write(datetime.datetime.utcnow().isoformat(' '))
+                    o.write(",")
                     o.write(y)
                     o.write(",")
                     for i, x in enumerate(output):
@@ -93,6 +96,7 @@ class CurlToCSV:
                             pass
                 else:
                     out = {}
+                    out["timestamp-utc"] = datetime.datetime.utcnow().isoformat(' ')
                     out["domain"] = y
                     for x in output:
                         try:
